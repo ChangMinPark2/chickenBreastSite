@@ -11,7 +11,7 @@ import javax.transaction.Transactional;
 import java.util.Optional;
 @Service
 @RequiredArgsConstructor
-@Transactional
+
 public class SignInService {
 
     private final UsersRepository usersRepository;

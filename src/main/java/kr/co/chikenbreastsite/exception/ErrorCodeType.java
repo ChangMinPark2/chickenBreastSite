@@ -14,6 +14,7 @@ public enum ErrorCodeType{
     WRONG_PASSWORD(400, "MEMBER_002", "비밀번호가 틀렸습니다."),
     DPLC_ID(400,"MEMBER_003", "중복된 아이디 입니다."),
     DPLC_CELLPHONE(400,"MEMBER_004", "중복된 전화번호 입니다."),
+    REQUIRED_NOT_INPUT(400, "MEMBER_005", "필수 입력 사항을 입력하지 않았습니다."),
 
     INPUT_VALUE_INVALID(400, "COMMON_003", "입력값이 올바르지 않습니다.");
 
