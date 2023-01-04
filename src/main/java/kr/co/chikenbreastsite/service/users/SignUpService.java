@@ -3,6 +3,8 @@ package kr.co.chikenbreastsite.service.users;
 
 import kr.co.chikenbreastsite.domain.dto.users.SignUpDto;
 import kr.co.chikenbreastsite.domain.entity.users.Users;
+import kr.co.chikenbreastsite.exception.users.DplcCellPhoneException;
+import kr.co.chikenbreastsite.exception.users.DplcIdException;
 import kr.co.chikenbreastsite.repository.users.UsersRepository;
 import lombok.RequiredArgsConstructor;
 
@@ -25,10 +27,10 @@ public class SignUpService {
         Boolean isExistCellphone = usersRepository.existsByCellphone(signUpDto.getCellphone());
 
         if(isExistIdentity){
-            System.out.println("아이디가 중복되었습니다.");
+            throw new DplcIdException();
         }
         if(isExistCellphone){
-            System.out.println("이미 등록된 전화번호입니다.");
+            throw new DplcCellPhoneException();
         }
 
         Users usersBuild = Users.builder()
@@ -41,10 +43,8 @@ public class SignUpService {
                 .cellphone(signUpDto.getCellphone())
                 .detailAddress(signUpDto.getDetailAddress())
                 .build();
-
         usersRepository.save(usersBuild);
     }
-
     /*
     * 회원정보 조회, 삭제, 업데이트 기능을 구현
     * <마이페이지>안에서 다 사용할 것이지만 우선 다 따로 메소드 만들기.
