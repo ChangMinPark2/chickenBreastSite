@@ -1,13 +1,7 @@
 package kr.co.chikenbreastsite.controller.users;
 
-import kr.co.chikenbreastsite.domain.dto.users.SignInDto;
-import kr.co.chikenbreastsite.domain.dto.users.SignUpDto;
-import kr.co.chikenbreastsite.domain.dto.users.UserDeleteDto;
-import kr.co.chikenbreastsite.domain.dto.users.UsersUpdateDto;
-import kr.co.chikenbreastsite.service.users.SignInService;
-import kr.co.chikenbreastsite.service.users.SignUpService;
-import kr.co.chikenbreastsite.service.users.UserUpdateService;
-import kr.co.chikenbreastsite.service.users.UsersDeleteService;
+import kr.co.chikenbreastsite.domain.dto.users.*;
+import kr.co.chikenbreastsite.service.users.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,9 +10,14 @@ import org.springframework.web.bind.annotation.*;
 @RequiredArgsConstructor
 public class UsersController {
     private final SignInService signInService;  //생성자주입
+
     private final SignUpService signUpService;
+
     private final UserUpdateService userUpdateService;
+
     private final UsersDeleteService usersDeleteService;
+
+    private final UsersGetService usersGetService;
 
     @PostMapping
     public void signUp(@RequestBody SignUpDto signUpDto){
@@ -32,10 +31,10 @@ public class UsersController {
 
     @PutMapping("/update")
     public void updateUser(@RequestBody UsersUpdateDto usersUpdateDto){ userUpdateService.userUpdate(usersUpdateDto); }
-        //TODO 회원 정보 수정 API
 
-    public void getUser(){
-        //TODO 회원 정보 조회 API
+    @GetMapping("/get")
+    public UsersGetDto usersGet(@RequestParam("identity") String identity){
+        return usersGetService.usersGet(identity);
     }
 
     @DeleteMapping
