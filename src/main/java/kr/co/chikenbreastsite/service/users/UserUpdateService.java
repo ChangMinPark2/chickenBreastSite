@@ -22,11 +22,10 @@ public class UserUpdateService {
             throw new RequiredNotInputException();
         }
 
-        Optional<Users> users = usersRepository.findByIdentity(usersUpdateDto.getIdentity());
-        if(!users.isPresent()){
-            throw new UsersNotFoundException();
-        }
-        if(users.get().getPassword() != usersUpdateDto.getPassword()){
+        Users users = usersRepository.findByIdentity(usersUpdateDto.getIdentity())
+                 .orElseThrow(() -> new UsersNotFoundException());
+
+        if(users.getPassword() != usersUpdateDto.getPassword()){
             throw new WrongPasswordException();
         }
 

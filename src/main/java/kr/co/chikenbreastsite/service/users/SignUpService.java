@@ -18,7 +18,6 @@ import javax.transaction.Transactional;
 public class SignUpService {
 
     private final UsersRepository usersRepository;
-
     /*
     * 회원가입 기능
      */
