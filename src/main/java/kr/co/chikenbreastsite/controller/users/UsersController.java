@@ -29,10 +29,10 @@ public class UsersController {
         signInService.signIn(signInDto);
     }
 
-    @PutMapping("/update")
+    @PutMapping
     public void updateUser(@RequestBody UsersUpdateDto usersUpdateDto){ userUpdateService.userUpdate(usersUpdateDto); }
 
-    @GetMapping("/get")
+    @GetMapping
     public UsersGetDto usersGet(@RequestParam("identity") String identity){
         return usersGetService.usersGet(identity);
     }
