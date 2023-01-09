@@ -3,8 +3,8 @@ package kr.co.chikenbreastsite.service.users;
 
 import kr.co.chikenbreastsite.domain.dto.users.SignUpDto;
 import kr.co.chikenbreastsite.domain.entity.users.Users;
-import kr.co.chikenbreastsite.exception.users.DplcCellPhoneException;
-import kr.co.chikenbreastsite.exception.users.DplcIdException;
+import kr.co.chikenbreastsite.exception.users.DuplicationCellPhoneException;
+import kr.co.chikenbreastsite.exception.users.DuplicationIdException;
 import kr.co.chikenbreastsite.repository.users.UsersRepository;
 import lombok.RequiredArgsConstructor;
 
@@ -26,10 +26,10 @@ public class SignUpService {
         Boolean isExistCellphone = usersRepository.existsByCellphone(signUpDto.getCellphone());
 
         if(isExistIdentity){
-            throw new DplcIdException();
+            throw new DuplicationIdException();
         }
         if(isExistCellphone){
-            throw new DplcCellPhoneException();
+            throw new DuplicationCellPhoneException();
         }
 
         Users usersBuild = Users.builder()

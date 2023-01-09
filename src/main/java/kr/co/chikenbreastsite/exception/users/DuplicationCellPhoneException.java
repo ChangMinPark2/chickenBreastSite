@@ -3,6 +3,6 @@ package kr.co.chikenbreastsite.exception.users;
 import kr.co.chikenbreastsite.exception.BusinessLogicException;
 import kr.co.chikenbreastsite.exception.ErrorCodeType;
 
-public class DplcCellPhoneException extends BusinessLogicException {
-    public DplcCellPhoneException(){super(ErrorCodeType.DPLC_CELLPHONE);}
+public class DuplicationCellPhoneException extends BusinessLogicException {
+    public DuplicationCellPhoneException(){super(ErrorCodeType.DUPLICATION_CELLPHONE);}
 }

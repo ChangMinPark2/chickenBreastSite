@@ -7,7 +7,6 @@ import kr.co.chikenbreastsite.repository.users.UsersRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import javax.transaction.Transactional;
-import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -33,10 +32,10 @@ public class UserUpdateService {
         Boolean isExistCellphone = usersRepository.existsByCellphone(usersUpdateDto.getCellphone());
 
         if(isExistIdentity){
-            throw new DplcIdException();
+            throw new DuplicationIdException();
         }
         if(isExistCellphone){
-            throw new DplcCellPhoneException();
+            throw new DuplicationCellPhoneException();
         }
 
         Users usersBuild = Users.builder()
