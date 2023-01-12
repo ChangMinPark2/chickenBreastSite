@@ -23,16 +23,7 @@ public class SignUpService {
         checkIdentity(signUpDto.getIdentity()); // 중복 id체크 메소드
         checkCellPhone(signUpDto.getCellphone()); // 중복 CellPhone 메소드
 
-        Users usersBuild = Users.builder()
-                .identity(signUpDto.getIdentity())
-                .password(signUpDto.getPassword())
-                .name(signUpDto.getName())
-                .gender(signUpDto.getGender())
-                .birth(signUpDto.getBirth())
-                .address(signUpDto.getAddress())
-                .cellphone(signUpDto.getCellphone())
-                .detailAddress(signUpDto.getDetailAddress())
-                .build();
+        final Users usersBuild = Users.of(signUpDto);
         usersRepository.save(usersBuild);
     }
     /*

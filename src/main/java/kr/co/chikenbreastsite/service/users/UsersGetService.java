@@ -23,15 +23,6 @@ public class UsersGetService {
         Users users = usersRepository.findByIdentity(identity)
                 .orElseThrow(() -> new UsersNotFoundException());
 
-        UsersGetDto usersGetDto = UsersGetDto.builder()
-                .identity(identity)
-                .name(users.getName())
-                .gender(users.getGender().toString())
-                .birth(users.getBirth())
-                .address(users.getAddress())
-                .detailAddress(users.getDetailAddress())
-                .build();
-
-        return usersGetDto;
+        return Users.of(users);
     }
 }

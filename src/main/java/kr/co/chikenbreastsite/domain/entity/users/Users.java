@@ -1,5 +1,7 @@
 package kr.co.chikenbreastsite.domain.entity.users;
 
+import kr.co.chikenbreastsite.domain.dto.users.SignUpDto;
+import kr.co.chikenbreastsite.domain.dto.users.UsersGetDto;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -58,6 +60,30 @@ public class Users {
         this.birth = birth;
         this.address = address;
         this.detailAddress = detailAddress;
+    }
+
+    public static Users of(SignUpDto signUpDto){
+        return Users.builder()
+                .identity(signUpDto.getIdentity())
+                .password(signUpDto.getPassword())
+                .name(signUpDto.getName())
+                .gender(signUpDto.getGender())
+                .birth(signUpDto.getBirth())
+                .address(signUpDto.getAddress())
+                .cellphone(signUpDto.getCellphone())
+                .detailAddress(signUpDto.getDetailAddress())
+                .build();
+    }
+
+    public static UsersGetDto of(Users users){
+        return UsersGetDto.builder()
+                .identity(users.getIdentity())
+                .name(users.getName())
+                .gender(users.getGender().toString())
+                .birth(users.getBirth())
+                .address(users.getAddress())
+                .detailAddress(users.getDetailAddress())
+                .build();
     }
 
     public void userUpdate(String name,
