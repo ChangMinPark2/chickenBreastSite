@@ -24,6 +24,6 @@ public class SignInService {
     }
 
     private void checkPassword(String originPassword, String password){
-        if(originPassword.equals(password)) throw new WrongPasswordException();
+        if(!originPassword.equals(password)) throw new WrongPasswordException();
     }
 }

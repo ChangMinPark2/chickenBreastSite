@@ -17,9 +17,12 @@ public class UsersDeleteService {
         Users users = usersRepository.findByIdentity(userDeleteDto.getIdentity())
                 .orElseThrow(() -> new UsersNotFoundException());
 
-        if(users.getPassword() != userDeleteDto.getPassword()){
-            throw new WrongPasswordException();
-        }
+        checkPassword(users.getPassword(), userDeleteDto.getPassword());
         usersRepository.delete(users);
+    }
+
+    private void checkPassword(String password, String checkPassword){
+        if(!password.equals(checkPassword))
+            throw new WrongPasswordException();
     }
 }
