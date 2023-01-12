@@ -5,6 +5,8 @@ import kr.co.chikenbreastsite.service.users.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+
 @RestController
 @RequestMapping("/users")
 @RequiredArgsConstructor
@@ -30,7 +32,7 @@ public class UsersController {
     }
 
     @PutMapping
-    public void updateUser(@RequestBody UsersUpdateDto usersUpdateDto){ userUpdateService.userUpdate(usersUpdateDto); }
+    public void updateUser(@RequestBody @Valid UsersUpdateDto usersUpdateDto){ userUpdateService.userUpdate(usersUpdateDto); }
 
     @GetMapping
     public UsersGetDto usersGet(@RequestParam("identity") String identity){

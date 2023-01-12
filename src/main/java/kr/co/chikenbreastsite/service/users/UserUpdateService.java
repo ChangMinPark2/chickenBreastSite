@@ -1,6 +1,7 @@
 package kr.co.chikenbreastsite.service.users;
 
 import kr.co.chikenbreastsite.domain.dto.users.UsersUpdateDto;
+import kr.co.chikenbreastsite.domain.entity.users.Gender;
 import kr.co.chikenbreastsite.domain.entity.users.Users;
 import kr.co.chikenbreastsite.exception.users.*;
 import kr.co.chikenbreastsite.repository.users.UsersRepository;
@@ -15,11 +16,6 @@ public class UserUpdateService {
     private final UsersRepository usersRepository;
 
     public void userUpdate(UsersUpdateDto usersUpdateDto){
-        if(usersUpdateDto.getIdentity() == null || usersUpdateDto.getGender() == null || usersUpdateDto.getCellphone() == null ||
-        usersUpdateDto.getName() == null || usersUpdateDto.getBirth() == null || usersUpdateDto.getAddress() == null ||
-        usersUpdateDto.getCellphone() == null || usersUpdateDto.getDetailedAdress() == null){
-            throw new RequiredNotInputException();
-        }
 
         Users users = usersRepository.findByIdentity(usersUpdateDto.getIdentity())
                  .orElseThrow(() -> new UsersNotFoundException());
@@ -32,22 +28,15 @@ public class UserUpdateService {
         Boolean isExistCellphone = usersRepository.existsByCellphone(usersUpdateDto.getCellphone());
 
         if(isExistIdentity){
-            throw new DuplicationIdException();
+            throw new DuplicationIdException(); //중복 ID 예외처리
         }
         if(isExistCellphone){
-            throw new DuplicationCellPhoneException();
+            throw new DuplicationCellPhoneException(); //중복 휴대폰 번호 예외처리
         }
+        // 고치던 도중 builder를 가져올 필요가 없다는 것을 깨닫고 userUpdate로 수정 .!
+        users.userUpdate(usersUpdateDto.getName(), usersUpdateDto.getGender(), usersUpdateDto.getCellphone(),
+                usersUpdateDto.getDetailedAdress(), usersUpdateDto.getBirth(), usersUpdateDto.getAddress());
 
-        Users usersBuild = Users.builder()
-                .identity(usersUpdateDto.getIdentity())
-                .password(usersUpdateDto.getPassword())
-                .name(usersUpdateDto.getName())
-                .gender(usersUpdateDto.getGender())
-                .birth(usersUpdateDto.getBirth())
-                .address(usersUpdateDto.getAddress())
-                .cellphone(usersUpdateDto.getCellphone())
-                .detailAddress(usersUpdateDto.getDetailedAdress())
-                .build();
-        usersRepository.save(usersBuild);
+        usersRepository.save(users);
     }
 }
