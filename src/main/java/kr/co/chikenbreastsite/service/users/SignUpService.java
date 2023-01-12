@@ -39,7 +39,7 @@ public class SignUpService {
     * 회원정보 조회, 삭제, 업데이트 기능을 구현
     * <마이페이지>안에서 다 사용할 것이지만 우선 다 따로 메소드 만들기.
      */
-    public void checkIdentity(String identity){
+    private void checkIdentity(String identity){
         if(usersRepository.existsByIdentity(identity))
             throw new DuplicationIdException();
     }
