@@ -11,19 +11,19 @@ import javax.transaction.Transactional;
 import java.util.Optional;
 @Service
 @RequiredArgsConstructor
-@Transactional
+
 public class SignInService {
 
     private final UsersRepository usersRepository;
 
     public void signIn(SignInDto signInDto){
-        Optional<Users> users = usersRepository.findByIdentity(signInDto.getIdentity());
+        Users users = usersRepository.findByIdentity(signInDto.getIdentity())
+                .orElseThrow(() -> new UsersNotFoundException());
 
-        if(!users.isPresent()){
-            throw new UsersNotFoundException();
-        }
-        if(users.get().getPassword().equals(signInDto.getPassword())){
-            throw new WrongPasswordException();
-        }
+        checkPassword(users.getPassword(), signInDto.getPassword());
+    }
+
+    private void checkPassword(String originPassword, String password){
+        if(!originPassword.equals(password)) throw new WrongPasswordException();
     }
 }

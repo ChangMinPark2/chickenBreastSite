@@ -1,15 +1,12 @@
 package kr.co.chikenbreastsite.service.users;
 
-
 import kr.co.chikenbreastsite.domain.dto.users.SignUpDto;
 import kr.co.chikenbreastsite.domain.entity.users.Users;
-import kr.co.chikenbreastsite.exception.users.DplcCellPhoneException;
-import kr.co.chikenbreastsite.exception.users.DplcIdException;
+import kr.co.chikenbreastsite.exception.users.DuplicationCellPhoneException;
+import kr.co.chikenbreastsite.exception.users.DuplicationIdException;
 import kr.co.chikenbreastsite.repository.users.UsersRepository;
 import lombok.RequiredArgsConstructor;
-
 import org.springframework.stereotype.Service;
-
 import javax.transaction.Transactional;
 
 @Service
@@ -18,35 +15,28 @@ import javax.transaction.Transactional;
 public class SignUpService {
 
     private final UsersRepository usersRepository;
-
     /*
     * 회원가입 기능
      */
     public void signUp(SignUpDto signUpDto){
-        Boolean isExistIdentity = usersRepository.existsByIdentity(signUpDto.getIdentity());
-        Boolean isExistCellphone = usersRepository.existsByCellphone(signUpDto.getCellphone());
 
-        if(isExistIdentity){
-            throw new DplcIdException();
-        }
-        if(isExistCellphone){
-            throw new DplcCellPhoneException();
-        }
+        checkIdentity(signUpDto.getIdentity()); // 중복 id체크 메소드
+        checkCellPhone(signUpDto.getCellphone()); // 중복 CellPhone 메소드
 
-        Users usersBuild = Users.builder()
-                .identity(signUpDto.getIdentity())
-                .password(signUpDto.getPassword())
-                .name(signUpDto.getName())
-                .gender(signUpDto.getGender())
-                .birth(signUpDto.getBirth())
-                .address(signUpDto.getAddress())
-                .cellphone(signUpDto.getCellphone())
-                .detailAddress(signUpDto.getDetailAddress())
-                .build();
+        final Users usersBuild = Users.of(signUpDto);
         usersRepository.save(usersBuild);
     }
     /*
     * 회원정보 조회, 삭제, 업데이트 기능을 구현
     * <마이페이지>안에서 다 사용할 것이지만 우선 다 따로 메소드 만들기.
      */
+    private void checkIdentity(String identity){
+        if(usersRepository.existsByIdentity(identity))
+            throw new DuplicationIdException();
+    }
+
+    private void checkCellPhone(String cellPhone){
+        if(usersRepository.existsByCellphone(cellPhone))
+            throw new DuplicationCellPhoneException();
+    }
 }
