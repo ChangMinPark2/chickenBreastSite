@@ -3,6 +3,7 @@ package kr.co.chikenbreastsite.domain.entity.product;
 
 import kr.co.chikenbreastsite.domain.dto.product.AddProductDto;
 import kr.co.chikenbreastsite.domain.dto.product.GetProductDto;
+import kr.co.chikenbreastsite.domain.dto.product.UpdateProductDto;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -21,6 +22,9 @@ public class Product {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "product_id")
     private Long productId;
+
+    @Column
+    private String productIdentity;
 
     @Column
     private String name;
@@ -54,5 +58,13 @@ public class Product {
                 .price(product.getPrice())
                 .inventoryQuantity(product.getInventoryQuantity())
                 .build();
+    }
+
+    public void updateProduct(String productIdentity,
+                              String name,
+                              String price) {
+        this.productIdentity = productIdentity;
+        this.name = name;
+        this.price = price;
     }
 }
