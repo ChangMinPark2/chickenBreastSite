@@ -3,6 +3,7 @@ package kr.co.chikenbreastsite.controller.product;
 import kr.co.chikenbreastsite.domain.dto.product.AddProductDto;
 import kr.co.chikenbreastsite.domain.dto.product.GetProductDto;
 import kr.co.chikenbreastsite.service.product.AddProductService;
+import kr.co.chikenbreastsite.service.product.DeleteProductService;
 import kr.co.chikenbreastsite.service.product.GetProductService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -17,6 +18,7 @@ public class ProductController {
 
     private final GetProductService getProductService;
 
+    private final DeleteProductService deleteProductService;
     @PostMapping
     public void AddProduct(@RequestBody @Valid AddProductDto addProductDto){
         addProductService.addProduct(addProductDto);
@@ -27,5 +29,8 @@ public class ProductController {
         return getProductService.getProduct(ProductIdentity);
     }
 
-   // public
+    @DeleteMapping
+    public void DeleteProduct(@RequestParam("ProductIdentity") String ProductIdentity){
+        deleteProductService.DeleteProduct(ProductIdentity);
+    }
 }
