@@ -18,7 +18,8 @@ public enum ErrorCodeType{
 
     //Product
     DUPLICATION_PRODUCT_ID(400,"PRODUCT_001", "중복된 상품 입니다."),
-    DUPLICATION_PRODUCT_NAME(400,"PRODUCT_001", "중복된 상품 이름 입니다."),
+    DUPLICATION_PRODUCT_NAME(400,"PRODUCT_002", "중복된 상품 이름 입니다."),
+    PRODUCT_NOT_FOUND(400,"PRODUCT_003", "해당 상품을 찾을 수 없습니다."),
 
     INPUT_VALUE_INVALID(400, "COMMON_003", "입력값이 올바르지 않습니다.");
 

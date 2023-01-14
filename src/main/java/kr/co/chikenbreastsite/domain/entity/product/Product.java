@@ -2,6 +2,7 @@ package kr.co.chikenbreastsite.domain.entity.product;
 
 
 import kr.co.chikenbreastsite.domain.dto.product.AddProductDto;
+import kr.co.chikenbreastsite.domain.dto.product.GetProductDto;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -44,6 +45,14 @@ public class Product {
                 .name(addProductDto.getName())
                 .price(addProductDto.getPrice())
                 .inventoryQuantity(addProductDto.getInventoryQuantity())
+                .build();
+    }
+
+    public static GetProductDto of(Product product){
+        return GetProductDto.builder()
+                .name(product.getName())
+                .price(product.getPrice())
+                .inventoryQuantity(product.getInventoryQuantity())
                 .build();
     }
 }

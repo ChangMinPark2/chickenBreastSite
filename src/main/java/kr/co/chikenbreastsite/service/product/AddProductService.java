@@ -28,7 +28,7 @@ public class AddProductService {
 
     private void CheckProductIdentity(String ProductIdentity){
         if(productRepository.existsByProductIdentity(ProductIdentity))
-            throw new DuplicationProductIdException();
+            throw new DuplicationProductIdException(); //TODO : 이 경우 CheckProductIdentity보다 CheckProductNumbur가 맞는지 조언을 구하고 싶음
     }
 
     private void CheckProductName(String ProductName){
