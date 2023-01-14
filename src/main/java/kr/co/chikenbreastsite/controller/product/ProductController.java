@@ -7,6 +7,8 @@ import kr.co.chikenbreastsite.service.product.GetProductService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/product")
@@ -16,7 +18,7 @@ public class ProductController {
     private final GetProductService getProductService;
 
     @PostMapping
-    public void AddProduct(@RequestBody AddProductDto addProductDto){
+    public void AddProduct(@RequestBody @Valid AddProductDto addProductDto){
         addProductService.addProduct(addProductDto);
     }
 
