@@ -17,7 +17,7 @@ public enum ErrorCodeType{
     REQUIRED_NOT_INPUT(400, "MEMBER_005", "필수 입력 사항을 입력하지 않았습니다."),
 
     //Product
-    DUPLICATION_PRODUCT_ID(400,"PRODUCT_001", "중복된 상품 입니다."),
+    DUPLICATION_PRODUCT_CODE(400,"PRODUCT_001", "중복된 상품 입니다."),
     DUPLICATION_PRODUCT_NAME(400,"PRODUCT_002", "중복된 상품 이름 입니다."),
     PRODUCT_NOT_FOUND(400,"PRODUCT_003", "해당 상품을 찾을 수 없습니다."),
     PRODUCT_DOES_NOT_ALREADY_EXIST(400,"PRODUCT_004", "해당 상품은 이미 존재하지 않습니다."),

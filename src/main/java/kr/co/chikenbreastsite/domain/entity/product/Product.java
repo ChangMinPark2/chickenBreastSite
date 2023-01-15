@@ -24,7 +24,7 @@ public class Product {
     private Long productId;
 
     @Column
-    private String productIdentity;
+    private String productCode;
 
     @Column
     private String name;
@@ -60,10 +60,10 @@ public class Product {
                 .build();
     }
 
-    public void updateProduct(String productIdentity,
+    public void updateProduct(String productCode,
                               String name,
                               String price) {
-        this.productIdentity = productIdentity;
+        this.productCode = productCode;
         this.name = name;
         this.price = price;
     }

@@ -7,7 +7,7 @@ import lombok.Getter;
 @Builder
 public class GetProductDto {
 
-    private String productIdentity;
+    private String productCode;
 
     private String name;
 

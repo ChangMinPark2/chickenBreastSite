@@ -9,7 +9,7 @@ import javax.validation.constraints.NotBlank;
 public class UpdateProductDto {
 
     @NotBlank(message = "상품 번호를 입력하지 않으셨습니다.")
-    private String productIdentity;
+    private String productCode;
 
     @NotBlank(message = "상품 이름을 입력하지 않으셨습니다.")
     private String name;
