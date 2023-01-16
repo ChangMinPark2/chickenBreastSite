@@ -28,14 +28,14 @@ public class ProductController {
         addProductService.createProduct(addProductDto);
     }
 
-    @GetMapping//해당 번호 상품 가져오기기능
-    public GetProductDto getProduct(@RequestParam("ProductIdentity") String ProductIdentity){
-        return getProductService.getProduct(ProductIdentity);
+    @GetMapping//해당 상품 가져오기
+    public GetProductDto getProduct(@RequestParam("productName") String productName){
+        return getProductService.getProduct(productName);
     }
 
     @DeleteMapping
-    public void DeleteProduct(@RequestParam("ProductIdentity") String ProductIdentity){
-        deleteProductService.DeleteProduct(ProductIdentity);
+    public void DeleteProduct(@RequestParam("productName") String productName){
+        deleteProductService.DeleteProduct(productName);
     }
 
     @PutMapping

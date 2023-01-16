@@ -17,15 +17,8 @@ public class UpdateProductService {
         Product product = productRepository.findByName(updateProductDto.getName())
                 .orElseThrow(() -> new ProductNotFoundException());
 
-        CheckName(updateProductDto.getName());
-
         product.updateProduct(updateProductDto.getName(), updateProductDto.getPrice());
 
         productRepository.save(product);
-    }
-
-    private void CheckName(String name){
-        if(productRepository.existsByName(name))
-            throw new DuplicationProductNameException();
     }
 }
