@@ -23,7 +23,7 @@ public class ProductController {
     private final DeleteProductService deleteProductService;
 
     private final UpdateProductService updateProductService;
-    @PostMapping
+    @PostMapping//상품 추가, 이름이 같으면 재고수량 증가
     public void AddProduct(@RequestBody @Valid AddProductDto addProductDto){
         addProductService.createProduct(addProductDto);
     }
