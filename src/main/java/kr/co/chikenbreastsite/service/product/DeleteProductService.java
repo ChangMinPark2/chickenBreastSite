@@ -13,8 +13,8 @@ public class DeleteProductService {
 
     private final ProductRepository productRepository;
 
-    public void DeleteProduct(String ProductCode){
-        Product product = productRepository.findByProductCode(ProductCode)
+    public void DeleteProduct(String productName){
+        Product product = productRepository.findByName(productName)
                 .orElseThrow(() -> new ProductDoesNotAlreadyExistException());
 
         productRepository.delete(product);

@@ -18,8 +18,8 @@ public class GetProductService {
     private final ProductRepository productRepository;
 
     @Transactional(readOnly = true)
-   public GetProductDto getProduct(String ProductCode){
-        Product product = productRepository.findByProductCode(ProductCode)
+   public GetProductDto getProduct(String productName){
+        Product product = productRepository.findByName(productName)
                 .orElseThrow(() -> new ProductNotFoundException());
 
         return Product.of(product);
