@@ -21,25 +21,25 @@ public class UsersController {
     private final UsersGetService usersGetService;
 
     @PostMapping
-    public void signUp(@RequestBody SignUpDto signUpDto){
+    public void signUp(@RequestBody @Valid SignUpDto signUpDto){
         signUpService.signUp(signUpDto);
     }
 
     @PostMapping("/login")
-    public void signIn(@RequestBody SignInDto signInDto){
+    public void signIn(@RequestBody @Valid SignInDto signInDto){
         signInService.signIn(signInDto);
     }
 
-    @PutMapping
+    @PutMapping("/myPage")
     public void updateUser(@RequestBody @Valid UsersUpdateDto usersUpdateDto){ userUpdateService.userUpdate(usersUpdateDto); }
 
-    @GetMapping
+    @GetMapping("/myPage")
     public UsersGetDto usersGet(@RequestParam("identity") String identity){
         return usersGetService.usersGet(identity);
     }
 
-    @DeleteMapping
-    public void deleteUser(@RequestBody UserDeleteDto userDeleteDto){
+    @DeleteMapping("/myPage")
+    public void deleteUser(@RequestBody @Valid UserDeleteDto userDeleteDto){
         usersDeleteService.UserDelete(userDeleteDto);
     }
 }
