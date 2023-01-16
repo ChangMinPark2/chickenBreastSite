@@ -15,6 +15,6 @@ public class UpdateProductDto {
     private String name;
 
     @NotBlank(message = "상품 가격을 입력하지 않으셨습니다.")
-    private String price;
+    private int price;
 
 }

@@ -24,21 +24,18 @@ public class Product {
     private Long productId;
 
     @Column
-    private String productCode;
-
-    @Column
     private String name;
 
     @Column
-    private String price;
+    private int price;
 
     @Column(name = "inventory_quantity")
-    private String inventoryQuantity;   //재고수량
+    private int inventoryQuantity;   //재고수량
 
     @Builder
     public Product(String name,
-                   String price,
-                   String inventoryQuantity) {
+                   int price,
+                   int inventoryQuantity) {
         this.name = name;
         this.price = price;
         this.inventoryQuantity = inventoryQuantity;
@@ -60,11 +57,13 @@ public class Product {
                 .build();
     }
 
-    public void updateProduct(String productCode,
-                              String name,
-                              String price) {
-        this.productCode = productCode;
+    public void updateProduct(String name,
+                              int price) {
         this.name = name;
         this.price = price;
+    }
+
+    public void updateInventoryQuantity(int inventoryQuantity){
+        this.inventoryQuantity += inventoryQuantity;
     }
 }

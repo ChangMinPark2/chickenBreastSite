@@ -11,7 +11,7 @@ public class GetProductDto {
 
     private String name;
 
-    private String price;
+    private int price;
 
-    private String inventoryQuantity;   //재고수량
+    private int inventoryQuantity;   //재고수량
 }

@@ -25,7 +25,7 @@ public class ProductController {
     private final UpdateProductService updateProductService;
     @PostMapping
     public void AddProduct(@RequestBody @Valid AddProductDto addProductDto){
-        addProductService.addProduct(addProductDto);
+        addProductService.createProduct(addProductDto);
     }
 
     @GetMapping//해당 번호 상품 가져오기기능

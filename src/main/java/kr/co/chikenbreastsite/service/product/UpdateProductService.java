@@ -21,7 +21,7 @@ public class UpdateProductService {
         CheckProductCode(updateProductDto.getProductCode());
         CheckName(updateProductDto.getName());
 
-        product.updateProduct(updateProductDto.getName(), updateProductDto.getPrice(), updateProductDto.getProductCode());
+        product.updateProduct(updateProductDto.getName(), updateProductDto.getPrice());
 
         productRepository.save(product);
     }

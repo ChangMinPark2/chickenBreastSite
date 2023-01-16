@@ -14,7 +14,7 @@ public class AddProductDto {
     private String name;
 
     @NotBlank(message = "상품 가격을 입력하지 않으셨습니다.")
-    private String price;
+    private int price;
 
-    private String inventoryQuantity;   //재고수량
+    private int inventoryQuantity;   //재고수량
 }
