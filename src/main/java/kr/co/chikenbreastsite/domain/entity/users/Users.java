@@ -2,6 +2,9 @@ package kr.co.chikenbreastsite.domain.entity.users;
 
 import kr.co.chikenbreastsite.domain.dto.users.SignUpDto;
 import kr.co.chikenbreastsite.domain.dto.users.UsersGetDto;
+import kr.co.chikenbreastsite.exception.users.NewPasswordException;
+import kr.co.chikenbreastsite.exception.users.WrongCheckPasswordException;
+import kr.co.chikenbreastsite.exception.users.WrongPasswordException;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -71,7 +74,7 @@ public class Users {
                 .birth(signUpDto.getBirth())
                 .address(signUpDto.getAddress())
                 .cellphone(signUpDto.getCellphone())
-                .detailAddress(signUpDto.getDetailAddress())
+                .detailAddress(signUpDto.getDetailedAdress())
                 .build();
     }
 
@@ -102,5 +105,20 @@ public class Users {
 
     public void passwordUpdate(String password){
         this.password = password;
+    }
+
+    public void wrongPasswordCheck(String password){
+        if(!this.password.equals(password))
+            throw new WrongPasswordException();
+    }
+
+    public void newPasswordCheck(String password){
+        if(this.password.equals(password))
+            throw new NewPasswordException();
+    }
+
+    public void wrongNewPasswordCheck(String newPassword, String checkPassword){
+        if(!newPassword.equals(checkPassword))
+            throw new WrongCheckPasswordException();
     }
 }

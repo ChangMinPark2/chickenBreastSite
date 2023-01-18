@@ -20,6 +20,8 @@ public class UsersController {
 
     private final UsersGetService usersGetService;
 
+    private final UsersPasswordUpdateService usersPasswordUpdateService;
+
     @PostMapping
     public void signUp(@RequestBody @Valid SignUpDto signUpDto){
         signUpService.signUp(signUpDto);
@@ -31,7 +33,12 @@ public class UsersController {
     }
 
     @PutMapping("/myPage")
-    public void updateUser(@RequestBody @Valid UsersUpdateDto usersUpdateDto){ userUpdateService.userUpdate(usersUpdateDto); }
+    public void updateUsers(@RequestBody @Valid UsersUpdateDto usersUpdateDto){ userUpdateService.userUpdate(usersUpdateDto); }
+
+    @PutMapping("/myPage/passwordUpdate")
+    public void passwordUpdateUsers(@RequestBody @Valid UsersPasswordUpdateDto usersPasswordUpdateDto){
+        usersPasswordUpdateService.usersPasswordUpdate(usersPasswordUpdateDto);
+    }
 
     @GetMapping("/myPage")
     public UsersGetDto usersGet(@RequestParam("identity") String identity){
