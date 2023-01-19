@@ -1,7 +1,6 @@
 package kr.co.chikenbreastsite.domain.dto.users;
 
 import lombok.Getter;
-
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -21,11 +20,11 @@ public class SignUpDto {
     @NotNull(message = "휴대폰 번호를 입력해주세요")
     String cellphone;
 
-    @NotNull(message = "생년월일을 입력해주세요")
-    String birth;
-
     @NotNull(message = "성별을 입력해주세요")
     String gender;
+
+    @NotNull(message = "생년월일을 입력해주세요")
+    String birth;
 
     @NotNull(message = "주소를 입력해주세요")
     String address;

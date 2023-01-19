@@ -48,17 +48,17 @@ public class Users {
 
     @Builder
     public Users(String identity,
+                 String password,
                  String name,
                  String cellphone,
-                 String password,
                  String gender, //FEMALE
                  String birth,
                  String address,
                  String detailAddress) {
         this.identity = identity;
+        this.password = password;
         this.name = name;
         this.cellphone = cellphone;
-        this.password = password;
         this.gender = Gender.of(gender);
         this.birth = birth;
         this.address = address;
@@ -70,10 +70,10 @@ public class Users {
                 .identity(signUpDto.getIdentity())
                 .password(signUpDto.getPassword())
                 .name(signUpDto.getName())
+                .cellphone(signUpDto.getCellphone())
                 .gender(signUpDto.getGender())
                 .birth(signUpDto.getBirth())
                 .address(signUpDto.getAddress())
-                .cellphone(signUpDto.getCellphone())
                 .detailAddress(signUpDto.getDetailedAdress())
                 .build();
     }
