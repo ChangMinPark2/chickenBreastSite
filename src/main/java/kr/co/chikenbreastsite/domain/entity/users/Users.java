@@ -82,6 +82,7 @@ public class Users {
         return UsersGetDto.builder()
                 .identity(users.getIdentity())
                 .name(users.getName())
+                .cellphone(users.getCellphone())
                 .gender(users.getGender().toString())
                 .birth(users.getBirth())
                 .address(users.getAddress())
