@@ -23,23 +23,18 @@ public class UserUpdateService {
                  .orElseThrow(() -> new UsersNotFoundException());
 
         checkPassword(users.getPassword(), usersUpdateDto.getPassword()); //비밀번호 체크
-        checkIdentity(usersUpdateDto.getIdentity()); //중복 id체크 메소드
-        checkCellPhone(usersUpdateDto.getCellphone()); //중복 password체크 메소드
+        checkCellPhone(usersRepository.existsByCellphone(usersUpdateDto.getCellphone()),
+                users.getCellphone(),
+                usersUpdateDto.getCellphone()); //중복 Cellphone체크 메소드
 
-        // 고치던 도중 builder를 가져올 필요가 없다는 것을 깨닫고 userUpdate로 수정 .!
-        users.userUpdate(usersUpdateDto.getName(), usersUpdateDto.getGender(), usersUpdateDto.getCellphone(),
-                usersUpdateDto.getDetailedAdress(), usersUpdateDto.getBirth(), usersUpdateDto.getAddress());
+        users.usersUpdate(usersUpdateDto.getName(), usersUpdateDto.getCellphone(), usersUpdateDto.getBirth(),
+                usersUpdateDto.getGender(), usersUpdateDto.getAddress(), usersUpdateDto.getDetailedAddress());
 
         usersRepository.save(users);
     }
 
-    private void checkIdentity(String identity){
-        if(usersRepository.existsByIdentity(identity))
-            throw new DuplicationIdException();
-    }
-
-    private void checkCellPhone(String cellPhone){
-        if(usersRepository.existsByCellphone(cellPhone))
+    private void checkCellPhone(Boolean othersCellphone, String cellPhone, String newCellphone){
+        if(othersCellphone && !cellPhone.equals(newCellphone))
             throw new DuplicationCellPhoneException();
     }
 

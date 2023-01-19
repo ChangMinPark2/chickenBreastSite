@@ -89,7 +89,7 @@ public class Users {
                 .build();
     }
 
-    public void userUpdate(String name,
+    public void usersUpdate(String name,
                            String cellphone,
                            String birth,
                            String gender,

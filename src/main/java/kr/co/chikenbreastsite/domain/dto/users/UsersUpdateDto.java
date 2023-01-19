@@ -36,5 +36,5 @@ public class UsersUpdateDto {
     String address;
 
     @NotNull(message = "상세주소를 입력해주세요")
-    String detailedAdress;
+    String detailedAddress;
 }
