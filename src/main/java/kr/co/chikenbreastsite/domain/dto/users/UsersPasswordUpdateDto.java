@@ -1,7 +1,6 @@
 package kr.co.chikenbreastsite.domain.dto.users;
 
 import lombok.Getter;
-
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 

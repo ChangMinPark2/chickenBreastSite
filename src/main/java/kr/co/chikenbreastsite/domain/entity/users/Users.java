@@ -117,9 +117,4 @@ public class Users {
         if(this.password.equals(password))
             throw new NewPasswordException();
     }
-
-    public void wrongNewPasswordCheck(String newPassword, String checkPassword){
-        if(!newPassword.equals(checkPassword))
-            throw new WrongCheckPasswordException();
-    }
 }
