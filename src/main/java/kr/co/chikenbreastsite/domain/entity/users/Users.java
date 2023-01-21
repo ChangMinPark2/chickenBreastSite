@@ -108,13 +108,4 @@ public class Users {
         this.password = password;
     }
 
-    public void wrongPasswordCheck(String password){
-        if(!this.password.equals(password))
-            throw new WrongPasswordException();
-    }
-
-    public void newPasswordCheck(String password){
-        if(this.password.equals(password))
-            throw new NewPasswordException();
-    }
 }
