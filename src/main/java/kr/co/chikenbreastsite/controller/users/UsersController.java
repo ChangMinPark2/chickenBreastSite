@@ -14,7 +14,7 @@ public class UsersController {
 
     private final SignUpService signUpService;
 
-    private final UserUpdateService userUpdateService;
+    private final UsersUpdateService usersUpdateService;
 
     private final UsersDeleteService usersDeleteService;
 
@@ -33,7 +33,7 @@ public class UsersController {
     }
 
     @PutMapping("/myPage")
-    public void updateUsers(@RequestBody @Valid UsersUpdateDto usersUpdateDto){ userUpdateService.userUpdate(usersUpdateDto); }
+    public void updateUsers(@RequestBody @Valid UsersUpdateDto usersUpdateDto){ usersUpdateService.userUpdate(usersUpdateDto); }
 
     @PutMapping("/myPage/passwordUpdate")
     public void passwordUpdateUsers(@RequestBody @Valid UsersPasswordUpdateDto usersPasswordUpdateDto){

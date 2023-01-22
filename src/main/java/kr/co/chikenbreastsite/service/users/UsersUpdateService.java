@@ -1,12 +1,9 @@
 package kr.co.chikenbreastsite.service.users;
 
 import kr.co.chikenbreastsite.domain.dto.users.UsersUpdateDto;
-import kr.co.chikenbreastsite.domain.entity.users.Gender;
 import kr.co.chikenbreastsite.domain.entity.users.Users;
-import kr.co.chikenbreastsite.exception.ErrorCodeType;
 import kr.co.chikenbreastsite.exception.users.*;
 import kr.co.chikenbreastsite.repository.users.UsersRepository;
-import lombok.Builder;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import javax.transaction.Transactional;
@@ -14,7 +11,7 @@ import javax.transaction.Transactional;
 @Service
 @RequiredArgsConstructor
 @Transactional
-public class UserUpdateService {
+public class UsersUpdateService {
     private final UsersRepository usersRepository;
 
     public void userUpdate(UsersUpdateDto usersUpdateDto){

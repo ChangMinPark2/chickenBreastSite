@@ -4,7 +4,7 @@ import kr.co.chikenbreastsite.domain.dto.users.UsersPasswordUpdateDto;
 import kr.co.chikenbreastsite.domain.entity.users.Users;
 import kr.co.chikenbreastsite.exception.users.NewPasswordException;
 import kr.co.chikenbreastsite.exception.users.UsersNotFoundException;
-import kr.co.chikenbreastsite.exception.users.WrongCheckPasswordException;
+import kr.co.chikenbreastsite.exception.users.WrongNewCheckPasswordException;
 import kr.co.chikenbreastsite.exception.users.WrongPasswordException;
 import kr.co.chikenbreastsite.repository.users.UsersRepository;
 import lombok.RequiredArgsConstructor;
@@ -42,6 +42,6 @@ public class UsersPasswordUpdateService {
 
     private void wrongNewPasswordCheck(String newPassword, String checkPassword){
         if(!newPassword.equals(checkPassword))
-            throw new WrongCheckPasswordException();
+            throw new WrongNewCheckPasswordException();
     }
 }

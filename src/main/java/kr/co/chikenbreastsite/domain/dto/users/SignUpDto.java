@@ -14,6 +14,10 @@ public class SignUpDto {
     @Size(min = 5, max = 15, message = "비밀번호는 5~15자를 입력해주세요.")
     private String password;
 
+    @NotNull(message = "확인 비밀번호를 입력하세요.")
+    @Size(min = 5, max = 15, message = "비밀번호는 5~15자를 입력해주세요.")
+    private String checkPassword;
+
     @NotNull(message = "이름을 입력하세요")
     String name;
 

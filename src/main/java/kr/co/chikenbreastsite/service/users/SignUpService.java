@@ -4,6 +4,7 @@ import kr.co.chikenbreastsite.domain.dto.users.SignUpDto;
 import kr.co.chikenbreastsite.domain.entity.users.Users;
 import kr.co.chikenbreastsite.exception.users.DuplicationCellPhoneException;
 import kr.co.chikenbreastsite.exception.users.DuplicationIdException;
+import kr.co.chikenbreastsite.exception.users.WrongCheckPasswordException;
 import kr.co.chikenbreastsite.repository.users.UsersRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -22,6 +23,7 @@ public class SignUpService {
 
         checkIdentity(signUpDto.getIdentity()); // 중복 id체크 메소드
         checkCellPhone(signUpDto.getCellphone()); // 중복 CellPhone 메소드
+        checkPassword(signUpDto.getPassword(), signUpDto.getCheckPassword()); //비밀번호 , 확인 비밀번호 일치 체크
 
         final Users usersBuild = Users.of(signUpDto);
         usersRepository.save(usersBuild);
@@ -38,5 +40,10 @@ public class SignUpService {
     private void checkCellPhone(String cellPhone){
         if(usersRepository.existsByCellphone(cellPhone))
             throw new DuplicationCellPhoneException();
+    }
+
+    private void checkPassword(String password, String checkPassword){
+        if(!password.equals(checkPassword))
+            throw new WrongCheckPasswordException();
     }
 }

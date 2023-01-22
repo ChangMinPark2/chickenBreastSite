@@ -2,9 +2,6 @@ package kr.co.chikenbreastsite.domain.entity.users;
 
 import kr.co.chikenbreastsite.domain.dto.users.SignUpDto;
 import kr.co.chikenbreastsite.domain.dto.users.UsersGetDto;
-import kr.co.chikenbreastsite.exception.users.NewPasswordException;
-import kr.co.chikenbreastsite.exception.users.WrongCheckPasswordException;
-import kr.co.chikenbreastsite.exception.users.WrongPasswordException;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
