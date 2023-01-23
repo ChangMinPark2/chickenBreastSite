@@ -23,9 +23,6 @@ public class UsersUpdateDto {
     @NotNull(message = "이름을 입력하세요")
     String name;
 
-    @NotNull(message = "휴대폰 번호를 입력해주세요")
-    String cellphone;
-
     @NotNull(message = "생년월일을 입력해주세요")
     String birth;
 

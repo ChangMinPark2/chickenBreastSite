@@ -22,6 +22,8 @@ public class UsersController {
 
     private final UsersPasswordUpdateService usersPasswordUpdateService;
 
+    private final UsersCellphoneUpdateService usersCellphoneUpdateService;
+
     @PostMapping
     public void signUp(@RequestBody @Valid SignUpDto signUpDto){
         signUpService.signUp(signUpDto);
@@ -34,6 +36,10 @@ public class UsersController {
 
     @PutMapping("/myPage")
     public void updateUsers(@RequestBody @Valid UsersUpdateDto usersUpdateDto){ usersUpdateService.userUpdate(usersUpdateDto); }
+
+    @PutMapping("/myPage/usersCellphone")
+    public void usersUpdateCellphone(@RequestBody @Valid UsersCellphoneUpdateDto usersCellphoneUpdateDto){
+        usersCellphoneUpdateService.usersUpdateCellphone(usersCellphoneUpdateDto);}
 
     @PutMapping("/myPage/passwordUpdate")
     public void passwordUpdateUsers(@RequestBody @Valid UsersPasswordUpdateDto usersPasswordUpdateDto){

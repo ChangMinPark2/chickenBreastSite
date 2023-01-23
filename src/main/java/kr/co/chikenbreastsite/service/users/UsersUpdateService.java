@@ -20,19 +20,11 @@ public class UsersUpdateService {
                  .orElseThrow(() -> new UsersNotFoundException());
 
         checkPassword(users.getPassword(), usersUpdateDto.getPassword()); //비밀번호 체크
-        checkCellPhone(usersRepository.existsByCellphone(usersUpdateDto.getCellphone()),
-                users.getCellphone(),
-                usersUpdateDto.getCellphone()); //중복 Cellphone체크 메소드
 
-        users.usersUpdate(usersUpdateDto.getName(), usersUpdateDto.getCellphone(), usersUpdateDto.getBirth(),
-                usersUpdateDto.getGender(), usersUpdateDto.getAddress(), usersUpdateDto.getDetailedAddress());
+        users.usersUpdate(usersUpdateDto.getName(), usersUpdateDto.getBirth(), usersUpdateDto.getGender(),
+                usersUpdateDto.getAddress(), usersUpdateDto.getDetailedAddress());
 
         usersRepository.save(users);
-    }
-
-    private void checkCellPhone(Boolean othersCellphone, String cellPhone, String newCellphone){
-        if(othersCellphone && !cellPhone.equals(newCellphone))
-            throw new DuplicationCellPhoneException();
     }
 
     private void checkPassword(String password, String checkPassword){

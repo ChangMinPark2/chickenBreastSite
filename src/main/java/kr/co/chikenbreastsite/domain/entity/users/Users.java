@@ -88,13 +88,11 @@ public class Users {
     }
 
     public void usersUpdate(String name,
-                           String cellphone,
                            String birth,
                            String gender,
                            String address,
                            String detailAddress){
         this.name = name;
-        this.cellphone = cellphone;
         this.birth = birth;
         this.gender = Gender.of(gender);
         this.address = address;
@@ -104,5 +102,7 @@ public class Users {
     public void passwordUpdate(String password){
         this.password = password;
     }
+
+    public void usersCellphoneUpdate(String cellphone){ this.cellphone = cellphone;}
 
 }
