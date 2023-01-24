@@ -14,32 +14,45 @@ public class UsersController {
 
     private final SignUpService signUpService;
 
-    private final UserUpdateService userUpdateService;
+    private final UsersUpdateService usersUpdateService;
 
     private final UsersDeleteService usersDeleteService;
 
     private final UsersGetService usersGetService;
 
+    private final UsersPasswordUpdateService usersPasswordUpdateService;
+
+    private final UsersCellphoneUpdateService usersCellphoneUpdateService;
+
     @PostMapping
-    public void signUp(@RequestBody SignUpDto signUpDto){
+    public void signUp(@RequestBody @Valid SignUpDto signUpDto){
         signUpService.signUp(signUpDto);
     }
 
     @PostMapping("/login")
-    public void signIn(@RequestBody SignInDto signInDto){
+    public void signIn(@RequestBody @Valid SignInDto signInDto){
         signInService.signIn(signInDto);
     }
 
-    @PutMapping
-    public void updateUser(@RequestBody @Valid UsersUpdateDto usersUpdateDto){ userUpdateService.userUpdate(usersUpdateDto); }
+    @PutMapping("/myPage")
+    public void updateUsers(@RequestBody @Valid UsersUpdateDto usersUpdateDto){ usersUpdateService.userUpdate(usersUpdateDto); }
 
-    @GetMapping
+    @PutMapping("/myPage/usersCellphone")
+    public void usersUpdateCellphone(@RequestBody @Valid UsersCellphoneUpdateDto usersCellphoneUpdateDto){
+        usersCellphoneUpdateService.usersUpdateCellphone(usersCellphoneUpdateDto);}
+
+    @PutMapping("/myPage/passwordUpdate")
+    public void passwordUpdateUsers(@RequestBody @Valid UsersPasswordUpdateDto usersPasswordUpdateDto){
+        usersPasswordUpdateService.usersPasswordUpdate(usersPasswordUpdateDto);
+    }
+
+    @GetMapping("/myPage")
     public UsersGetDto usersGet(@RequestParam("identity") String identity){
         return usersGetService.usersGet(identity);
     }
 
-    @DeleteMapping
-    public void deleteUser(@RequestBody UserDeleteDto userDeleteDto){
+    @DeleteMapping("/myPage")
+    public void deleteUser(@RequestBody @Valid UserDeleteDto userDeleteDto){
         usersDeleteService.UserDelete(userDeleteDto);
     }
 }
