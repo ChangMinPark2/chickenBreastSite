@@ -7,8 +7,10 @@ import lombok.Getter;
 @AllArgsConstructor
 public enum ErrorCodeType{
 
-    UNKNOWN(400, "COMMON_001", "UNKNOWN"),
-    USER_UNAUTHORIZED(400, "COMMON_002", "이 기능을 사용할 수 없는 사용자입니다."),
+    //Common? Success? TODO : common을 왜 써야하는지 모르겠움,
+    SUCCESS_NULL(200, "SUCCESS_001", "실행이 성공했고, 응답 데이터는 없습니다."),
+    SUCCESS_VALUE(200, "SUCCESS_002", "실행이 성공했고, 응답 데이터는 있습니다."),
+    FAIL_NULL(400,"FAIL_001","실행실패입니다."),
     //Users
     USER_NOT_FOUND(400, "MEMBER_001", "해당 회원을 찾을 수 없습니다."),
     WRONG_PASSWORD(400, "MEMBER_002", "비밀번호가 일치하지 않습니다."),
@@ -22,10 +24,8 @@ public enum ErrorCodeType{
     //Product
     DUPLICATION_PRODUCT_NAME(400,"PRODUCT_002", "중복된 상품 이름 입니다."),
     PRODUCT_NOT_FOUND(400,"PRODUCT_003", "해당 상품을 찾을 수 없습니다."),
-    PRODUCT_DOES_NOT_ALREADY_EXIST(400,"PRODUCT_004", "해당 상품은 이미 존재하지 않습니다."),
-
-    INPUT_VALUE_INVALID(400, "COMMON_003", "입력값이 올바르지 않습니다.");
-
+    PRODUCT_DOES_NOT_ALREADY_EXIST(400,"PRODUCT_004", "해당 상품은 이미 존재하지 않습니다.");
+    //내가 만들어논 예외 말고 다른 예외가 올 경우, 서버가 다운 될 수도 있는데, exception handler를 통해서 500 에러를 보내주는 역할을한다.
     private int status;
     private String code;
     private String message;
