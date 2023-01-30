@@ -1,6 +1,7 @@
 package kr.co.chikenbreastsite.controller.product;
 
 import kr.co.chikenbreastsite.domain.dto.product.AddProductDto;
+import kr.co.chikenbreastsite.domain.dto.product.DeleteProductDto;
 import kr.co.chikenbreastsite.domain.dto.product.GetProductDto;
 import kr.co.chikenbreastsite.domain.dto.product.UpdateProductDto;
 import kr.co.chikenbreastsite.exception.ResponseFormat;
@@ -36,8 +37,8 @@ public class ProductController {
     }
 
     @DeleteMapping
-    public ResponseFormat DeleteProduct(@RequestParam("productName") String productName){
-        deleteProductService.DeleteProduct(productName);
+    public ResponseFormat DeleteProduct(@RequestBody @Valid DeleteProductDto deleteProductDto){
+        deleteProductService.DeleteProduct(deleteProductDto);
         return ResponseFormat.ok();
     }
 
