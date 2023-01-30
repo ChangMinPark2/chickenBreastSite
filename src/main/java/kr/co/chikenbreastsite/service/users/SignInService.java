@@ -2,6 +2,7 @@ package kr.co.chikenbreastsite.service.users;
 
 import kr.co.chikenbreastsite.domain.dto.users.SignInDto;
 import kr.co.chikenbreastsite.domain.entity.users.Users;
+import kr.co.chikenbreastsite.exception.ResponseFormat;
 import kr.co.chikenbreastsite.exception.users.UsersNotFoundException;
 import kr.co.chikenbreastsite.exception.users.WrongPasswordException;
 import kr.co.chikenbreastsite.repository.users.UsersRepository;
@@ -21,6 +22,7 @@ public class SignInService {
                 .orElseThrow(() -> new UsersNotFoundException());
 
         checkPassword(users.getPassword(), signInDto.getPassword());
+        ResponseFormat.ok(users);
     }
 
     private void checkPassword(String originPassword, String password){

@@ -1,9 +1,6 @@
 package kr.co.chikenbreastsite.domain.dto.product;
 
-import lombok.Builder;
 import lombok.Getter;
-
-import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
 @Getter
