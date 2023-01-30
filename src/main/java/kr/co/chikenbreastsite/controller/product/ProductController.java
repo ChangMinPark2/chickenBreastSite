@@ -1,6 +1,7 @@
 package kr.co.chikenbreastsite.controller.product;
 
 import kr.co.chikenbreastsite.domain.dto.product.AddProductDto;
+import kr.co.chikenbreastsite.domain.dto.product.DeleteProductDto;
 import kr.co.chikenbreastsite.domain.dto.product.GetProductDto;
 import kr.co.chikenbreastsite.domain.dto.product.UpdateProductDto;
 import kr.co.chikenbreastsite.exception.ResponseFormat;
@@ -27,7 +28,7 @@ public class ProductController {
     private final UpdateProductService updateProductService;
 
     @PostMapping//상품 추가, 이름이 같으면 재고수량 증가
-    public ResponseFormat AddProduct(@RequestBody @Valid AddProductDto addProductDto){
+    public ResponseFormat addProduct(@RequestBody @Valid AddProductDto addProductDto){
         addProductService.createProduct(addProductDto);
         return ResponseFormat.ok("상품추가가 되었습니다.");
     }
@@ -38,8 +39,8 @@ public class ProductController {
     }
 
     @DeleteMapping
-    public ResponseFormat DeleteProduct(@RequestParam("productName") String productName){
-        deleteProductService.DeleteProduct(productName);
+    public ResponseFormat deleteProduct(@RequestBody @Valid DeleteProductDto deleteProductDto){
+        deleteProductService.deleteProduct(deleteProductDto);
         return ResponseFormat.ok();
     }
 

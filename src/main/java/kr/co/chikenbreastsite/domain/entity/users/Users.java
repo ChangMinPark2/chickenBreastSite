@@ -2,6 +2,7 @@ package kr.co.chikenbreastsite.domain.entity.users;
 
 import kr.co.chikenbreastsite.domain.dto.users.SignUpDto;
 import kr.co.chikenbreastsite.domain.dto.users.UsersGetDto;
+import kr.co.chikenbreastsite.domain.entity.product.UserRole;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -43,6 +44,9 @@ public class Users {
     @Column
     private String detailAddress;
 
+    @Column
+    private UserRole userRole;
+
     @Builder
     public Users(String identity,
                  String password,
@@ -51,7 +55,8 @@ public class Users {
                  String gender, //FEMALE
                  String birth,
                  String address,
-                 String detailAddress) {
+                 String detailAddress,
+                 String userRole) {
         this.identity = identity;
         this.password = password;
         this.name = name;
@@ -60,6 +65,7 @@ public class Users {
         this.birth = birth;
         this.address = address;
         this.detailAddress = detailAddress;
+        this.userRole = UserRole.of(userRole);
     }
 
     public static Users of(SignUpDto signUpDto){
@@ -72,6 +78,7 @@ public class Users {
                 .birth(signUpDto.getBirth())
                 .address(signUpDto.getAddress())
                 .detailAddress(signUpDto.getDetailedAdress())
+                .userRole(signUpDto.getUserRole())
                 .build();
     }
 

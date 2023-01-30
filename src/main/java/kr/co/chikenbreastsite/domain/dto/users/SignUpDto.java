@@ -35,4 +35,7 @@ public class SignUpDto {
 
     @NotNull(message = "상세주소를 입력해주세요")
     String detailedAdress;
+
+    @NotNull(message = "일반 사용자인지, 관리자인지 입력해주세요")
+    String userRole;
 }
