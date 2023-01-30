@@ -11,6 +11,7 @@ import javax.validation.Valid;
 @RequestMapping("/users")
 @RequiredArgsConstructor
 public class UsersController {
+
     private final SignInService signInService;  //생성자주입
 
     private final SignUpService signUpService;
@@ -53,8 +54,8 @@ public class UsersController {
         return ResponseFormat.ok();
     }
 
-    @GetMapping("/myPage") //TODO: test까지 잘 되는거 확인했는데, Get의 경우 이렇게 구현하는게 맞는지 궁금합니다.
-    public ResponseFormat usersGet(@RequestParam("identity") String identity){
+    @GetMapping("/myPage")
+    public ResponseFormat<UsersGetDto> usersGet(@RequestParam("identity") String identity){
         return ResponseFormat.ok(usersGetService.usersGet(identity));
     }
 
