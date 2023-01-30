@@ -11,6 +11,7 @@ import javax.validation.Valid;
 @RequestMapping("/users")
 @RequiredArgsConstructor
 public class UsersController {
+
     private final SignInService signInService;  //생성자주입
 
     private final SignUpService signUpService;
