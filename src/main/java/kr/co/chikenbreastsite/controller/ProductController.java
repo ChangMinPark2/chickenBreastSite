@@ -1,4 +1,4 @@
-package kr.co.chikenbreastsite.controller.product;
+package kr.co.chikenbreastsite.controller;
 
 import kr.co.chikenbreastsite.domain.dto.product.AddProductDto;
 import kr.co.chikenbreastsite.domain.dto.product.DeleteProductDto;
