@@ -1,9 +1,11 @@
 package kr.co.chikenbreastsite.domain.entity.product;
 
 
+import kr.co.chikenbreastsite.domain.dto.order.CreateOrderDto;
 import kr.co.chikenbreastsite.domain.dto.product.AddProductDto;
 import kr.co.chikenbreastsite.domain.dto.product.GetProductDto;
 import kr.co.chikenbreastsite.domain.dto.product.UpdateProductDto;
+import kr.co.chikenbreastsite.domain.entity.order.Order;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -24,7 +26,7 @@ public class Product {
     private Long productId;
 
     @Column
-    private String name;
+    private String name;  //find
 
     @Column
     private int price;
@@ -55,6 +57,10 @@ public class Product {
                 .price(product.getPrice())
                 .inventoryQuantity(product.getInventoryQuantity())
                 .build();
+    }
+
+    public void orderinven(int num){
+        this.inventoryQuantity = num;
     }
 
     public void updateProduct(String name,

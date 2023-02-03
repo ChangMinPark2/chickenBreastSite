@@ -1,4 +1,4 @@
-package kr.co.chikenbreastsite.controller.users;
+package kr.co.chikenbreastsite.controller;
 
 import kr.co.chikenbreastsite.domain.dto.users.*;
 import kr.co.chikenbreastsite.exception.ResponseFormat;

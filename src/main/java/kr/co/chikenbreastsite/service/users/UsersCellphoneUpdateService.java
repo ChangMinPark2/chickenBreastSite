@@ -5,7 +5,7 @@ import kr.co.chikenbreastsite.domain.entity.users.Users;
 import kr.co.chikenbreastsite.exception.users.DuplicationCellPhoneException;
 import kr.co.chikenbreastsite.exception.users.UsersNotFoundException;
 import kr.co.chikenbreastsite.exception.users.WrongPasswordException;
-import kr.co.chikenbreastsite.repository.users.UsersRepository;
+import kr.co.chikenbreastsite.repository.UsersRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

@@ -2,9 +2,8 @@ package kr.co.chikenbreastsite.service.product;
 
 import kr.co.chikenbreastsite.domain.dto.product.UpdateProductDto;
 import kr.co.chikenbreastsite.domain.entity.product.Product;
-import kr.co.chikenbreastsite.exception.product.DuplicationProductNameException;
 import kr.co.chikenbreastsite.exception.product.ProductNotFoundException;
-import kr.co.chikenbreastsite.repository.product.ProductRepository;
+import kr.co.chikenbreastsite.repository.ProductRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

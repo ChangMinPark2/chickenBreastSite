@@ -1,4 +1,4 @@
-package kr.co.chikenbreastsite.repository.users;
+package kr.co.chikenbreastsite.repository;
 
 import kr.co.chikenbreastsite.domain.entity.users.Users;
 import org.springframework.data.jpa.repository.JpaRepository;

@@ -25,7 +25,11 @@ public enum ErrorCodeType{
     //Product
     DUPLICATION_PRODUCT_NAME(400,"PRODUCT_002", "중복된 상품 이름 입니다."),
     PRODUCT_NOT_FOUND(400,"PRODUCT_003", "해당 상품을 찾을 수 없습니다."),
-    PRODUCT_DOES_NOT_ALREADY_EXIST(400,"PRODUCT_004", "해당 상품은 이미 존재하지 않습니다.");
+    PRODUCT_DOES_NOT_ALREADY_EXIST(400,"PRODUCT_004", "해당 상품은 이미 존재하지 않습니다."),
+
+    //Order
+    PRODUCT_DOES_NOT_HAVE(400, "PRODUCT_005", "재고 부족입니다.");
+
     //내가 만들어논 예외 말고 다른 예외가 올 경우, 서버가 다운 될 수도 있는데, exception handler를 통해서 500 에러를 보내주는 역할을한다.
     private int status;
     private String code;
