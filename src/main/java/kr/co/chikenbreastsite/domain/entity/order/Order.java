@@ -2,6 +2,7 @@ package kr.co.chikenbreastsite.domain.entity.order;
 
 
 import kr.co.chikenbreastsite.domain.dto.order.CreateOrderDto;
+import kr.co.chikenbreastsite.domain.dto.order.ReadOrderDto;
 import kr.co.chikenbreastsite.domain.entity.product.Product;
 import kr.co.chikenbreastsite.domain.entity.users.Users;
 import lombok.AllArgsConstructor;
@@ -14,6 +15,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @Entity
@@ -64,7 +67,15 @@ public class Order {
                 .build();
     }
 
-//    public void updateProduct(CreateOrderDto createOrderDto){
-//        this.product.getInventoryQuantity() =- createOrderDto.getNumberOfProducts();
-//    }
+    public static ReadOrderDto of(Order order){
+        return ReadOrderDto.builder()
+                .createAt(order.getCreateAt())
+                .paymentMethod(order.getPaymentMethod())
+                .totalPrice(order.getTotalPrice())
+                .usersName(order.getUsers().getName())
+                .productsName(order.getProduct().getName())
+                .price(order.getTotalPrice())
+                .build();
+    }
+
 }

@@ -1,13 +1,9 @@
 package kr.co.chikenbreastsite.domain.dto.order;
 
-import kr.co.chikenbreastsite.domain.entity.product.Product;
-import kr.co.chikenbreastsite.domain.entity.users.Users;
-import lombok.Builder;
 import lombok.Getter;
-
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import java.time.LocalDate;
+
 
 @Getter
 public class CreateOrderDto {
