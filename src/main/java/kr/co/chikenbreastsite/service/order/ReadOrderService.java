@@ -32,15 +32,7 @@ public class ReadOrderService {
         ArrayList<ReadOrderDto> readOrderDtos = new ArrayList<>();
 
         for(Order order : orders){
-            ReadOrderDto readOrderDto = ReadOrderDto.builder()
-                    .createAt(order.getCreateAt())
-                    .paymentMethod(order.getPaymentMethod())
-                    .totalPrice(order.getTotalPrice())
-                    .usersName(order.getUsers().getName())
-                    .productsName(order.getProduct().getName())
-                    .price(order.getTotalPrice())
-                    .build();
-            readOrderDtos.add(readOrderDto);
+            readOrderDtos.add(Order.of(order));
         }
         return readOrderDtos;
     }

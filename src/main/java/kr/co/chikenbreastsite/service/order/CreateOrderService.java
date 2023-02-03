@@ -37,7 +37,7 @@ public class CreateOrderService {
         Product product = productRepository.findByName(createOrderDto.getProducts())
                 .orElseThrow(() -> new ProductNotFoundException());
 
-        updateInventoryQuantity(product.getInventoryQuantity(), createOrderDto.getNumberOfProducts(), product);
+        updateInventoryQuantity( createOrderDto.getNumberOfProducts(), product);
 
         LocalDate nowDate = LocalDate.now(); //현재 날짜
 
@@ -50,9 +50,8 @@ public class CreateOrderService {
             throw new WrongPasswordException();
     }
 
-    private void updateInventoryQuantity(int productInventoryQuantity,
-                                         int numberofProduct, Product product){
-        if(productInventoryQuantity > 0){
+    private void updateInventoryQuantity( int numberofProduct, Product product){
+        if(product.getInventoryQuantity() - numberofProduct > 0) {
             product.orderinven(product.getInventoryQuantity() - numberofProduct);
             productRepository.save(product);
         }
